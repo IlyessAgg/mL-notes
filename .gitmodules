@@ -1,0 +1,3 @@
+[submodule "quartz/styles/quartz-themes"]
+	path = quartz/styles/quartz-themes
+	url = git@github.com:IlyessAgg/quartz-themes.git
