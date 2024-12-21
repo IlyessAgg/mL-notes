@@ -2,3 +2,19 @@
 @use "quartz-themes";
 
 // put your custom CSS here!
+
+// Center images
+img[alt*="center"] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Center tables
+.table-container,
+.table-container table {
+  margin-inline: auto;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
