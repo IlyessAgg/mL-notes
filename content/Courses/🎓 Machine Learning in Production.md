@@ -2,19 +2,11 @@
 title: "🎓 Machine Learning in Production"
 draft: false
 tags:
-  - 
 ---
-```table-of-contents
-title: 
-style: nestedOrderedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
-minLevel: 0 # Include headings from the specified level
-maxLevel: 0 # Include headings up to the specified level
-includeLinks: true # Make headings clickable
-debugInConsole: false # Print debug info in Obsidian console
-```
+
 # ML Lifecycle and Deployment
 
-![[MLInfrastructure.png]]
+![[_assets/MLInfrastructure.png]]
 
 **Data drift** - *data distribution changes i.e* some changes in the actual data from the data that was used to train (ex: lighting variation)
 
@@ -23,7 +15,7 @@ debugInConsole: false # Print debug info in Obsidian console
 **POC to Production Gap** - ML model code ~ 5-10%, rest is ML project code (ex: data collection, feature extraction etc.)
 
 **ML Project Life Cycle**
-![[MLProjectLifeCycle.png]]
+![[_assets/MLProjectLifeCycle.png]]
 # Deployment
 **2 Key Challenges in Deployment**:
 1. **Concept/Data drift** - Recognizing if/how (shock/gradual) the data changes and updating the model.

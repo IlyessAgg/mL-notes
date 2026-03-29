@@ -52,7 +52,7 @@ After this filter has convolved the entire input, we'll be left with a _new repr
 
 The number of filters determines the **number of output channels.**
 
-![[DepthFeatureMaps.png|center|400]]
+![[_assets/DepthFeatureMaps.png|center|400]]
 >_For example, if we apply `10` filters of size `5x5x3` to an input of size `32x32x3`, we will obtain a `32x32x10` output, where each depth component (red slice in image) is a **feature map**._
 
 **Filters** - allow the network to detect _**patterns**_, such as _edges, shapes, textures, curves, objects, colors._
@@ -86,12 +86,12 @@ In even _**deeper layers**_, the filters are able to detect **even more sophisti
 
 >[!tip]- Conv2d with multiple input channels
 > For two inputs, you can create two kernels. **Each kernel performs a convolution on its associated input channel.** The resulting output is added together as shown:  
-> ![[Conv2dMultipleInputChannels.png|center|600]]
+> ![[_assets/Conv2dMultipleInputChannels.png|center|600]]
 > 
 > When using multiple inputs and outputs, a kernel is created for each input, and the process is repeated for each output. The process is summarized in the following image. 
 > 
 > There are two input channels and 3 output channels. For each channel, the input in red and purple is convolved with an individual kernel that is colored differently. As a result, there are three outputs. 
-> ![[Conv2dMultipleInputAndOutput.png|center|600]]
+> ![[_assets/Conv2dMultipleInputAndOutput.png|center|600]]
 
 > [!abstract] Parameters
 > $$Parameters = (k_{w}*k_{h}*k_{d}+1)*C_{out}$$
@@ -103,14 +103,14 @@ In even _**deeper layers**_, the filters are able to detect **even more sophisti
 
 In essence, a convolution operation produces a _**weighted sum**_ of pixel values. Therefore, it is a **linear** operation. Following a convolution with another will just be a convolution. 
 
-![[ConvolutionSum.gif|center]]
+![[_assets/ConvolutionSum.gif|center]]
 >*Each element of the kernel is a **weight** that the network will **learn** during training.*
 
 However, part of the reason CNNs are able to achieve such tremendous accuracies is **because of their non-linearity.** Non-linearity is necessary to produce **non-linear decision boundaries**, so that the output ***cannot be written as a linear combination of the inputs.*** If a non-linear activation function was not present, deep CNN architectures would devolve into a *single, equivalent convolutional layer,* which would not perform nearly as well.
 
 That is why we follow the convolution with a [[Activation Functions#ReLU|ReLU activation]], which makes all negative values to zero.
 
-![[ReLUFunction.png|center|500]]
+![[_assets/ReLUFunction.png|center|500]]
 
 >The ReLU activation function is specifically used as a *non-linear activation function*, as opposed to other non-linear functions such as _Sigmoid_ because it has been [empirically observed](https://arxiv.org/pdf/1906.01975.pdf "See page 29") that ***CNNs using ReLU are faster to train*** than their counterparts.
 
@@ -119,7 +119,7 @@ That is why we follow the convolution with a [[Activation Functions#ReLU|ReLU ac
 > **Down-sampling** operation that reduces the dimensionality of the feature map.
 
 Purpose of **gradually decreasing the spatial extent** of the network, which ***reduces the parameters and overall computation*** of the network.
-![[MaxPooling.png|center]]
+![[_assets/MaxPooling.png|center]]
 > *MaxPooling operation with a `2x2 kernel` with `(2,2) stride`. We can think of each 2 x 2 blocks as **pools** of numbers*.
 
 Works like a convolution, but instead of computing the *weighted sum*, we return the **Maximum value (MaxPooling)** or the **Average value (AvgPooling)**. As such, **this layer doesn't have any trainable parameters.**
@@ -129,7 +129,7 @@ Works like a convolution, but instead of computing the *weighted sum*, we return
 > 
 > This in fact is what **maximum pooling** does. Max pooling takes a patch of activations in the original feature map and replaces them with the maximum activation in that patch.
 >
->![[MaxPoolingCondense.png|center|400]]
+>![[_assets/MaxPoolingCondense.png|center|400]]
 >
 >When applied after the ReLU activation, it has the effect of _'intensifying'_ features. The pooling step increases the proportion of active pixels to zero pixels.
 >
@@ -139,14 +139,14 @@ Works like a convolution, but instead of computing the *weighted sum*, we return
 >
 >Watch what happens when we repeatedly apply maximum pooling to the following feature map.
 >
->![[MaxPoolingTranslationInvariance1.png]]
+>![[_assets/MaxPoolingTranslationInvariance1.png]]
 >
 >The two dots in the original image became *indistinguishable* after repeated pooling. In other words, pooling ***destroyed some of their positional information***. Since the network can no longer distinguish between them in the feature maps, it can't distinguish them in the original image either: it has become **invariant** to that difference in position.
 >
 >In fact, pooling only creates translation invariance in a network _over small distances_, as with the two dots in the image. Features that begin far apart will remain distinct after pooling; only _some_ of the positional information was lost, but not all of it.
 >
 >
->![](MaxPoolingInvariance2.png) 
+>![](_assets/MaxPoolingInvariance2.png) 
 >
 >This invariance to small differences in the positions of features is a nice property for an image classifier to have. Just because of differences in perspective or framing, the same kind of feature might be positioned in various parts of the original image, but we would still like for the classifier to recognize that they are the same. Because this invariance is _built into_ the network, we can get away with using much less data for training: we no longer have to teach it to ignore that difference. This gives convolutional networks a big efficiency advantage over a network with only dense layers.
 >
@@ -171,7 +171,7 @@ Works like a convolution, but instead of computing the *weighted sum*, we return
 
 **Overfitting** - model becomes too closely ***adapted to the training data***, capturing even its random fluctuations. The model describes features that arise from *noise* or *variance* in the data, rather than the **underlying distribution** from which the data were drawn.
 
-![[UnderfittingVsOverfitting.png|center|600]]
+![[_assets/UnderfittingVsOverfitting.png|center|600]]
 
 Several regularization techniques can be applied to mitigate overfitting in CNNs :
 
@@ -197,7 +197,7 @@ Several regularization techniques can be applied to mitigate overfitting in CNNs
 >*[Batch Norm Explained Visually](https://towardsdatascience.com/batch-norm-explained-visually-how-it-works-and-why-neural-networks-need-it-b18919692739)*
 >
 >📌<u><b>Additional</b></u>
->![[ConvolutionMovement.png|center|150]]
+>![[_assets/ConvolutionMovement.png|center|150]]
 >>*Movement of a kernel.*
 >
 >❓ <u><b>Questions</b></u>
